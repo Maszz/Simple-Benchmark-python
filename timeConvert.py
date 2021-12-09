@@ -1,5 +1,9 @@
 class TimeConverter():
     def __init__(self, seconds):
+        """
+        Setup constants units. 
+        and other setup format.
+        """
         self.SECONDS_OF_HOURS = 3600
         self.SECONDS_OF_MINUTES = 60
         self.timeFormat = self.timeConverter(seconds)
