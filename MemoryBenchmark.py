@@ -1,7 +1,7 @@
 import time
 import os
 import psutil
-# from timeConvert import TimeConverter as tc
+from timeConvert import TimeConverter as tc
 
 
 class MemoryBenchmark:
@@ -18,7 +18,7 @@ class MemoryBenchmark:
         temp = os.urandom(8589934592)
         stop = time.time()
 
-        print(stop-start)
+        print(tc(stop-start).toString())
         # temp.hex()
         # print((self.maxmemory/(1024*1024))/(stop-start))
         # print(stop-start)

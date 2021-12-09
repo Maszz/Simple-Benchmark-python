@@ -10,16 +10,23 @@ import psutil
 
 class HarddiskBenchmark:
     def __init__(self, filename=None):
+        """
+        Initialize HarddiskBenchmark object. 
+        try to create temporary directory if it doesn't exist
+        setting up config for benchmark [filesize] , [fileAmount]
+        :param : 
+
+        """
         self.filename = filename
+        self.fileSize = 1024*128*2
+        self.fileAmount = 8000*2*2
         try:
             os.mkdir("temp")
         except FileExistsError:
             self.deleteTempFile()
+            os.mkdir("temp")
 
-        # os.mkdir("temp2")
-
-        self.fileSize = 1024*128*2
-        self.fileAmount = 8000*2*2
+        
         # self.createFiles(self.fileAmount, self.fileSize)
         self.createFilesOs(self.fileAmount, self.fileSize)
 
@@ -28,20 +35,7 @@ class HarddiskBenchmark:
         # self.sequentialWrite(self.fileAmount, self.fileSize)
         self.sequentialWrite_os(self.fileAmount, self.fileSize)
 
-        # self.randomRead()
-        # self.sequentialWrite2()
-        # self.randomRead2()
-
-        """Generator for output"""
-        # created = self.createFiles(self.fileSize)
-        # for i in created:
-        #     print(i)
-        # sequentialRead = self.sequentialRead()
-        # for i in sequentialRead:
-        #     print(i)
-        # for i in self.randomRead():
-        #     print(i)
-
+    
         self.deleteTempFile()
 
     def createFiles(self, fileAmount, size):
@@ -152,6 +146,9 @@ class HarddiskBenchmark:
     #     print(f'randomRead time: {tc(stop).toString()}')
 
     def deleteTempFile(self):
+        """
+        Delete temporary directory for benchmarking.
+        """
         start = time.time()
         shutil.rmtree("temp")
 

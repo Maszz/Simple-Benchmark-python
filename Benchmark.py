@@ -3,7 +3,6 @@ import time
 from timeConvert import TimeConverter as tc
 import random
 import numpy as np
-# import weakref
 
 
 class Benchmark:
