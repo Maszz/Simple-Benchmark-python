@@ -6,4 +6,4 @@ How to contribute to this repository
 
 3 - create your own branch for work and push your work only on your branch.
 
-4 - create pull request to development - 1
+
