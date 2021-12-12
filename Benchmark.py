@@ -16,8 +16,6 @@ class Benchmark:
         self.returnValue = dict()
         self.worker = multiprocessing.cpu_count()
         self.excuteTime = None
-        # print(np.version.version
-        #       )
 
     def multicoreBenchmark(self, job):
         """
@@ -60,7 +58,7 @@ class Benchmark:
         """
         temp = list()
         for _ in range(iterations):
-            a=self.benchMarkAlgorithms()
+            a = self.benchMarkAlgorithms()
             temp.append(a[0])
 
         returnDict[workerNumber] = temp
