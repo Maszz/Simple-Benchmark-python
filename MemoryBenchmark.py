@@ -50,5 +50,3 @@ if __name__ == '__main__':
     a = MemoryBenchmark()
 
     print(a.cacheMemory(1000000))
-    # print(a.fibo_dynamic_cache(10))
-    # print(psutil.virtual_memory().total/8)
