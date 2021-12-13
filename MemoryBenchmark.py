@@ -11,21 +11,18 @@ class MemoryBenchmark:
         # self.memoryStressTest()
         self.cache = dict()
 
-    def memoryStressTest(self):
+    def memoryStressTest(self, n):
         """
         This func assign a byte size of total virtual memory .
 
         """
+        temp = os.urandom(self.maxmemory)
         start = time.time()
-        temp = os.urandom(8589934592)
+        for i in range(n):
+            self.fibonacci_sequence_memorizing(i)
         stop = time.time()
 
-        print(tc(stop-start).toString())
-        # temp.hex()
-        # print((self.maxmemory/(1024*1024))/(stop-start))
-        # print(stop-start)
-        # print(psutil.virtual_memory())
-        # time.sleep(30)
+        return (tc(stop-start).toString())
 
     def cacheMemory(self, n):
         """
@@ -34,19 +31,32 @@ class MemoryBenchmark:
         start = time.time()
         for i in range(n):
             # self.fibonacci_sequence(i)
-            self.fibo_dynamic_cache(i)
+            self.fibonacci_sequence(i)
         stop = time.time()
-        return stop-start, self.fibonacci_sequence.cache_info()
+        stat = self.fibonacci_sequence.cache_info()
+        self.fibonacci_sequence.cache_clear()
+        return stop-start, stat
 
     @lru_cache(maxsize=128)
     def fibonacci_sequence(self, n):
-        if n <= 2:
+        if n < 2:
             return 1
         else:
             return self.fibonacci_sequence(n-1)+self.fibonacci_sequence(n-2)
 
+    @lru_cache(maxsize=0)
+    def fibonacci_sequence_memorizing(self, n):
+        if n in self.cache:
+            return self.cache[n]
+        elif n < 2:
+            self.cache[n] = 1
+            return self.cache[n]
+        else:
+            self.cache[n] = self.fibonacci_sequence_memorizing(
+                n-1)+self.fibonacci_sequence_memorizing(n-2)
+            return self.cache[n]
+
 
 if __name__ == '__main__':
     a = MemoryBenchmark()
-
-    print(a.cacheMemory(1000000))
+    print(a.memoryStressTest(100000))
