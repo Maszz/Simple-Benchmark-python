@@ -8,21 +8,22 @@ from functools import lru_cache
 class MemoryBenchmark:
     def __init__(self):
         self.maxmemory = psutil.virtual_memory().total
-        # self.memoryStressTest()
-        self.cache = dict()
+        self.cache = None
 
-    def memoryStressTest(self, n):
-        """
-        This func assign a byte size of total virtual memory .
+    # def memoryTest(self, n):
+    #     """
+    #     This func assign a byte size of total virtual memory .
 
-        """
-        temp = os.urandom(self.maxmemory)
-        start = time.time()
-        for i in range(n):
-            self.fibonacci_sequence_memorizing(i)
-        stop = time.time()
+    #     """
+    #     # self.cache = dict()
+    #     temp = os.urandom(self.maxmemory)
+    #     start = time.time()
+    #     for i in range(n):
+    #         self.fibonacci_sequence(i)
+    #     stop = time.time()
+    #     # self.cache = None
 
-        return (tc(stop-start).toString())
+        # return (tc(stop-start).toString())
 
     def cacheMemory(self, n):
         """
@@ -30,7 +31,6 @@ class MemoryBenchmark:
         """
         start = time.time()
         for i in range(n):
-            # self.fibonacci_sequence(i)
             self.fibonacci_sequence(i)
         stop = time.time()
         stat = self.fibonacci_sequence.cache_info()
@@ -44,7 +44,6 @@ class MemoryBenchmark:
         else:
             return self.fibonacci_sequence(n-1)+self.fibonacci_sequence(n-2)
 
-    @lru_cache(maxsize=0)
     def fibonacci_sequence_memorizing(self, n):
         if n in self.cache:
             return self.cache[n]
