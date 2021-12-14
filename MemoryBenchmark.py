@@ -59,4 +59,4 @@ class MemoryBenchmark:
 
 if __name__ == '__main__':
     a = MemoryBenchmark()
-    print(a.memoryStressTest(100000))
+    print(a.cacheMemory(1000000))
