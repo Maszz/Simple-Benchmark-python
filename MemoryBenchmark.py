@@ -44,16 +44,16 @@ class MemoryBenchmark:
         else:
             return self.fibonacci_sequence(n-1)+self.fibonacci_sequence(n-2)
 
-    def fibonacci_sequence_memorizing(self, n):
-        if n in self.cache:
-            return self.cache[n]
-        elif n < 2:
-            self.cache[n] = 1
-            return self.cache[n]
-        else:
-            self.cache[n] = self.fibonacci_sequence_memorizing(
-                n-1)+self.fibonacci_sequence_memorizing(n-2)
-            return self.cache[n]
+    # def fibonacci_sequence_memorizing(self, n):
+    #     if n in self.cache:
+    #         return self.cache[n]
+    #     elif n < 2:
+    #         self.cache[n] = 1
+    #         return self.cache[n]
+    #     else:
+    #         self.cache[n] = self.fibonacci_sequence_memorizing(
+    #             n-1)+self.fibonacci_sequence_memorizing(n-2)
+    #         return self.cache[n]
 
 
 if __name__ == '__main__':
