@@ -26,7 +26,6 @@ class HarddiskBenchmark:
             self.deleteTempFile()
             os.mkdir("temp")
 
-        
         # self.createFiles(self.fileAmount, self.fileSize)
         self.createFilesOs(self.fileAmount, self.fileSize)
 
@@ -35,7 +34,6 @@ class HarddiskBenchmark:
         # self.sequentialWrite(self.fileAmount, self.fileSize)
         self.sequentialWrite_os(self.fileAmount, self.fileSize)
 
-    
         self.deleteTempFile()
 
     def createFiles(self, fileAmount, size):
@@ -85,8 +83,6 @@ class HarddiskBenchmark:
             with open(f"temp/{i}.dat", "rb") as f:
                 f.seek(0)
                 f.read()
-                # with open(os.devnull, "wb") as devnull:
-                #     devnull.write(f.read())
 
         # yield f'finish in {stop}'
         print(f'sequentialRead time: {tc(time.time() - start).toString()}')
