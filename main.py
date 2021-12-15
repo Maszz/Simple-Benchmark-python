@@ -17,8 +17,7 @@ class App:
         self.app_root.title("Benchmark")
         self.app_root.resizable(width=False, height=False)
         self.results = dict()
-        # self.resultstable = [
-        #     {"round": 1, "cpu": None, "create": None, "read": None, "write": None, "delete": None}]
+
         self.resultstable = [[]]
         self.thead = [
             ["round", "cpu", "create", "read", "write", "delete", "memory"]]
