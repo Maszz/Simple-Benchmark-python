@@ -3,6 +3,7 @@ import time
 from timeConvert import TimeConverter as tc
 import random
 import numpy as np
+import configparser
 
 
 class Benchmark:
@@ -12,12 +13,17 @@ class Benchmark:
         ** In multiprocessor we can't get the returnValue in direct way, using manager in Multiprocess to get the output.
 
         """
+        config = configparser.ConfigParser()
+        config.read_file(open('config.cfg'))
+        self.job = int(config.get('CPU_BENCHMARK', 'BENCHMARK_JOB'))
+        self.rd_num_size = int(config.get('CPU_BENCHMARK', 'RD_NUM_SIZE'))
+        self.arrays_size = int(config.get('CPU_BENCHMARK', 'ARRAY_SIZE'))
         self.results = []
         self.returnValue = dict()
         self.worker = multiprocessing.cpu_count()
         self.excuteTime = None
 
-    def multicoreBenchmark(self, job):
+    def multicoreBenchmark(self):
         """
         Main algorithm to assigning job to process.
         Multiprocessing is module to create multiple of process intredsof one process.
@@ -28,8 +34,8 @@ class Benchmark:
         """
         start = time.time()
         process = list()
-        iterations = job // self.worker
-        fractionOfJob = job % self.worker
+        iterations = self.job // self.worker
+        fractionOfJob = self.job % self.worker
         # stressMemory = os.urandom(psutil.virtual_memory().total)
 
         for worker in range(self.worker):
@@ -47,7 +53,7 @@ class Benchmark:
         for p in process:
             p.join()
         stop = time.time()
-        self.excuteTime = tc(stop - start).toString()
+        self.excuteTime = tc(stop - start).toShortString()
 
     def benchmarkProcess(self, returnDict, workerNumber, iterations):
         """
@@ -68,11 +74,11 @@ class Benchmark:
         Algorithm for benchmarking.
         """
         start = time.time()
-        x = np.array([[random.getrandbits(32) for _ in range(1000)]
-                      for _ in range(1000)])
+        x = np.array([[random.getrandbits(self.rd_num_size) for _ in range(self.arrays_size)]
+                      for _ in range(self.arrays_size)])
 
-        y = np.array([[random.getrandbits(32) for _ in range(1000)]
-                      for _ in range(1000)])
+        y = np.array([[random.getrandbits(self.rd_num_size) for _ in range(self.arrays_size)]
+                      for _ in range(self.arrays_size)])
         z = x@y
         stop = time.time()
         return (stop - start, z)
