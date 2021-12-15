@@ -3,12 +3,16 @@ import os
 import psutil
 from timeConvert import TimeConverter as tc
 from functools import lru_cache
+import configparser
 
 
 class MemoryBenchmark:
     def __init__(self):
+        config = configparser.ConfigParser()
+        config.read_file(open('config.cfg'))
+        self.job = int(config.get('MEMORY_BENCHMARK', 'MEMORY_BENCHMARK_JOB'))
         self.maxmemory = psutil.virtual_memory().total
-        self.cache = None
+        self.result = None
 
     # def memoryTest(self, n):
     #     """
@@ -25,17 +29,18 @@ class MemoryBenchmark:
 
         # return (tc(stop-start).toString())
 
-    def cacheMemory(self, n):
+    def memoryBenchmark(self):
         """
         Fibo level memorizing use LRU Cache
         """
+        temp = os.urandom(self.maxmemory)
         start = time.time()
-        for i in range(n):
+        for i in range(self.job):
             self.fibonacci_sequence(i)
         stop = time.time()
-        stat = self.fibonacci_sequence.cache_info()
+        # stat = self.fibonacci_sequence.cache_info()
         self.fibonacci_sequence.cache_clear()
-        return stop-start, stat
+        self.result = tc(stop-start).toShortString()
 
     @lru_cache(maxsize=128)
     def fibonacci_sequence(self, n):
@@ -44,19 +49,7 @@ class MemoryBenchmark:
         else:
             return self.fibonacci_sequence(n-1)+self.fibonacci_sequence(n-2)
 
-    # def fibonacci_sequence_memorizing(self, n):
-    #     if n in self.cache:
-    #         return self.cache[n]
-    #     elif n < 2:
-    #         self.cache[n] = 1
-    #         return self.cache[n]
-    #     else:
-    #         self.cache[n] = self.fibonacci_sequence_memorizing(
-    #             n-1)+self.fibonacci_sequence_memorizing(n-2)
-    #         return self.cache[n]
-    #
-
 
 if __name__ == '__main__':
     a = MemoryBenchmark()
-    print(a.cacheMemory(1000000))
+    print(a.memoryBenchmark(1000000))
