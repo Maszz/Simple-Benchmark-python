@@ -53,7 +53,7 @@ class Benchmark:
         for p in process:
             p.join()
         stop = time.time()
-        self.excuteTime = tc(stop - start).toShortString()
+        self.excuteTime = stop-start
 
     def benchmarkProcess(self, returnDict, workerNumber, iterations):
         """

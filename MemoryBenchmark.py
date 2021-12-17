@@ -40,7 +40,7 @@ class MemoryBenchmark:
         stop = time.time()
         # stat = self.fibonacci_sequence.cache_info()
         self.fibonacci_sequence.cache_clear()
-        self.result = tc(stop-start).toShortString()
+        self.result = stop-start
 
     @lru_cache(maxsize=128)
     def fibonacci_sequence(self, n):

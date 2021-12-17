@@ -78,7 +78,7 @@ class HarddiskBenchmark:
             os.close(f)
         stop = time.time() - start
         # yield f'finish in {stop}'
-        self.result.append(tc(stop).toShortString())
+        self.result.append(stop)
 
     def sequentialRead(self, fileAmount):
         start = time.time()
@@ -116,7 +116,7 @@ class HarddiskBenchmark:
             os.close(f)
         stop = time.time() - start
 
-        self.result.append(tc(stop).toShortString())
+        self.result.append(stop)
 
     def sequentialWrite_os(self):
         start = time.time()
@@ -129,7 +129,7 @@ class HarddiskBenchmark:
             # stop = time.time() - start1
             os.close(f)
         stop = time.time() - start
-        self.result.append(tc(stop).toShortString())
+        self.result.append(stop)
 
     # def randomRead(self):
     #     start = time.time()
@@ -156,7 +156,7 @@ class HarddiskBenchmark:
         shutil.rmtree("temp")
 
         stop = time.time() - start
-        self.result.append(tc(stop).toShortString())
+        self.result.append(stop)
         # start = time.time()
 
         # shutil.rmtree("temp2")

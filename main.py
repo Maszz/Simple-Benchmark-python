@@ -8,6 +8,7 @@ from views import progressbar as P
 from views import systeminfo as S
 import time
 import MemoryBenchmark as M
+from timeConvert import TimeConverter as tc
 
 
 class App:
@@ -18,7 +19,8 @@ class App:
         self.app_root.resizable(width=False, height=False)
         self.results = dict()
 
-        self.resultstable = [[]]
+        self.resultstable = [{}]
+        self.benchmarkresults = [{}]
         self.thead = [
             ["round", "cpu", "create", "read", "write", "delete", "memory"]]
         width = 763
@@ -119,37 +121,54 @@ class App:
     def doallbenchwithupdatestate(self):
         self.resultstable.append(
             {"round": self.iter, "cpu": None, "create": None, "read": None, "write": None, "delete": None, "mem": None})
+        self.benchmarkresults.append(
+            {"round": self.iter, "cpu": None, "create": None, "read": None, "write": None, "delete": None, "mem": None})
         a = cpuBench.Benchmark()
         a.multicoreBenchmark()
-        self.resultstable[self.iter]["cpu"] = a.excuteTime
+        self.resultstable[self.iter]["cpu"] = tc(a.excuteTime).toShortString()
+        self.benchmarkresults[self.iter]["cpu"] = a.excuteTime
         self.state()
         self.app_root.update()
         time.sleep(4)
         self.app_root.update()
         bench = ioBench.HarddiskBenchmark()
         bench.createFilesOs()
-        self.resultstable[self.iter]["create"] = bench.result[0]
+        self.resultstable[self.iter]["create"] = tc(
+            bench.result[0]).toShortString()
+        self.benchmarkresults[self.iter]["create"] = bench.result[0]
+
         self.state()
         self.app_root.update()
 
         bench.sequentialRead_os()
-        self.resultstable[self.iter]["read"] = bench.result[1]
+        self.resultstable[self.iter]["read"] = tc(
+            bench.result[1]).toShortString()
+        self.benchmarkresults[self.iter]["read"] = bench.result[1]
+
         self.state()
         self.app_root.update()
 
         bench.sequentialWrite_os()
-        self.resultstable[self.iter]["write"] = bench.result[2]
+        self.resultstable[self.iter]["write"] = tc(
+            bench.result[2]).toShortString()
+        self.benchmarkresults[self.iter]["write"] = bench.result[2]
+
         self.state()
         self.app_root.update()
 
         bench.deleteTempFile()
-        self.resultstable[self.iter]["delete"] = bench.result[3]
+        self.resultstable[self.iter]["delete"] = tc(
+            bench.result[3]).toShortString()
+        self.benchmarkresults[self.iter]["delete"] = bench.result[3]
+
         self.state()
         self.app_root.update()
 
         m = M.MemoryBenchmark()
         m.memoryBenchmark()
-        self.resultstable[self.iter]["mem"] = m.result
+        self.resultstable[self.iter]["mem"] = tc(m.result).toShortString()
+        self.benchmarkresults[self.iter]["mem"] = m.result
+
         self.state()
         self.app_root.update()
 
