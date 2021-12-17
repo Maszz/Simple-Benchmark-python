@@ -11,8 +11,6 @@ class Benchmark:
     def __init__(self):
         """
         Initialize worker and mulltiprocessing varable .
-        ** In multiprocessor we can't get the returnValue in direct way, using manager in Multiprocess to get the output.
-
         """
         config = CONFIG()
         self.job = config.CPU_BENCHMARK_JOB

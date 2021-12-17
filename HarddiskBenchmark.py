@@ -15,7 +15,7 @@ class HarddiskBenchmark:
         """
         Initialize HarddiskBenchmark object. 
         try to create temporary directory if it doesn't exist
-        setting up config for benchmark [filesize] , [fileAmount]
+        setting up config for benchmark `filesize` , `fileAmount`
         :param : 
 
         """
@@ -40,9 +40,9 @@ class HarddiskBenchmark:
 
     def createFilesOs(self):
         """
-        createdFile benchmark created binary file for 300000times @ size 1024 bytes.
+        createdFile benchmark created binary file for `self.fileAmount` @ size `self.fileSize` bytes.
         In development don't open directory.
-        :param : Integer of binary size in bytes.
+        :param : None
         :return : None.
         """
         start = time.time()
