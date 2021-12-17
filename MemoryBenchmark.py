@@ -3,37 +3,28 @@ import os
 import psutil
 from timeConvert import TimeConverter as tc
 from functools import lru_cache
-import configparser
+from config import CONFIG
 
 
 class MemoryBenchmark:
+    """
+    Memory Benchmark Class : This is Memmory benchmark using memorizing to implement 
+    Benchmark 
+    """
+
     def __init__(self):
-        config = configparser.ConfigParser()
-        config.read_file(open('config.cfg'))
-        self.job = int(config.get('MEMORY_BENCHMARK', 'MEMORY_BENCHMARK_JOB'))
-        self.maxmemory = psutil.virtual_memory().total
+        config = CONFIG()
+        self.job = config.MEMORY_BENCHMARK_JOB
+        self.MAX_MEMORY = psutil.virtual_memory().total
         self.result = None
-
-    # def memoryTest(self, n):
-    #     """
-    #     This func assign a byte size of total virtual memory .
-
-    #     """
-    #     # self.cache = dict()
-    #     temp = os.urandom(self.maxmemory)
-    #     start = time.time()
-    #     for i in range(n):
-    #         self.fibonacci_sequence(i)
-    #     stop = time.time()
-    #     # self.cache = None
-
-        # return (tc(stop-start).toString())
 
     def memoryBenchmark(self):
         """
-        Fibo level memorizing use LRU Cache
+        This function calculates fibonacci sequence from :meth: `fibonacci_sequence` when memory is stressing.
+        :param :None
+        :return : None , store excuteTime to `self.result`
         """
-        temp = os.urandom(self.maxmemory)
+        temp = os.urandom(self.MAX_MEMORY)
         start = time.time()
         for i in range(self.job):
             self.fibonacci_sequence(i)
@@ -44,6 +35,11 @@ class MemoryBenchmark:
 
     @lru_cache(maxsize=128)
     def fibonacci_sequence(self, n):
+        """
+        This function calculates the fibonacci sequence using LRU caching
+        :param n: term of fibonacci sequences
+        :return: nth of fibonacci sequence 
+        """
         if n < 2:
             return 1
         else:

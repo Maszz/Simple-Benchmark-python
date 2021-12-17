@@ -1,6 +1,7 @@
 
 from tkinter import *
 import configparser
+from config import CONFIG
 
 
 class Table:
@@ -8,10 +9,9 @@ class Table:
     def __init__(self, root, datalst):
 
         # code for creating table
-        config = configparser.ConfigParser()
-        config.read_file(open('config.cfg'))
-        self.width = config.getint('TABLE', 'WIDTH')
-        self.fontsize = config.getint('TABLE', 'FONT_SIZE')
+        config = CONFIG()
+        self.width = config.WIDTH
+        self.fontsize = config.FONT_SIZE
         self.total_rows = len(datalst)
         self.total_columns = len(datalst[0])
         self.flm = Frame(master=root)

@@ -31,7 +31,6 @@ class App:
                                     (screenwidth - width) / 2, (screenheight - height) / 2)
         self.app_root.geometry(alignstr)
         self.__render__()
-        # self.app_root.bind_all("<Motion>", func=self.state)
         self.iter = 1
         self.tbody = None
 
