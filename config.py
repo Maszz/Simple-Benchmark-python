@@ -4,6 +4,7 @@ import platform
 
 class Config:
     def __init__(self):
+        """Configuration"""
         self._config = configparser.ConfigParser()
         self.checkSystem()
         self.WIDTH = self._config.get('TABLE', 'WIDTH')
