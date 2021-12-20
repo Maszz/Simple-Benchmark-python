@@ -5,8 +5,7 @@ from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QApplication
 
 
-from pages.LoadingScreen import LoadingScreen
-###############
+from pages.AppUI import LoadingScreen
 
 ###############
 

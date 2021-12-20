@@ -1,16 +1,102 @@
+from os import close
+import sys
+from time import clock
+from typing import Counter
 from PyQt5.uic import loadUi
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5 import QtWidgets, QtCore, QtGui, uic
+from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
-# from Systeminfo import Systeminfo
 
 
 from CpuBenchmark import CpuBenchmark
 from HarddiskBenchmark import HarddiskBenchmark
 from MemoryBenchmark import MemoryBenchmark
 from timeConvert import TimeConverter as tc
-# import HarddiskBenchmark as HarddiskBenchmark
+
+###############
+import platform
+
+import psutil
 import time
+import re
+import uuid
+###############
+
+
+class LoadingScreen(QMainWindow):
+    def __init__(self):
+        self.counter = 0
+        super(LoadingScreen, self).__init__()
+        loadUi("views/loadingScreen.ui", self)
+        self.splashframe.setStyleSheet("background-color: transparent;")
+
+        # QTIMER ==> START
+        self.timer = QtCore.QTimer()
+        self.timer.timeout.connect(self.progress)
+        # TIMER IN MILLISECONDS
+        self.timer.start(10)
+
+    def progress(self):
+
+        # SET VALUE TO PROGRESS BAR
+        self.progressBar.setValue(self.counter)
+
+        # CLOSE SPLASH SCREE AND OPEN APP
+        if self.counter > 100:
+            # STOP TIMER
+            self.timer.stop()
+
+            # SHOW MAIN WINDOW
+            self.main = Systeminfo()
+            self.main.show()
+
+            # CLOSE SPLASH SCREEN
+            self.close()
+
+        # INCREASE COUNTER
+        self.counter += 1
+
+
+class Systeminfo(QMainWindow):
+    def __init__(self):
+        super(Systeminfo, self).__init__()
+        loadUi("views/systemInfo.ui", self)
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        # self.gridLayout_2.setStyleSheet("background: transparent;")
+
+
+####################################################
+        self.exitButton.clicked.connect(lambda: self.close())
+        self.pushButton_2.clicked.connect(self.goToBenchmarkPage)
+
+        self.showSystemData()
+
+        # output data system
+    def showSystemData(self):
+        self.platform_2.setText(platform.system())
+
+        self.arcitecture.setText(platform.machine())
+        self.host_name_2.setText(platform.node())
+
+        self.address_2.setText(':'.join(re.findall('..',
+                                                   '%012x' % uuid.getnode())))
+
+        self.processor_2.setText(platform.processor())
+        self.ram_2.setText(
+            f"{str(round(psutil.virtual_memory().total / (1024.0 ** 3)))}GB")
+
+    def goToBenchmarkPage(self):
+
+        # SHOW MAIN WINDOW
+        self.main = BenchmarkPage()
+        self.main.show()
+
+        # CLOSE SPLASH SCREEN
+        self.close()
+
+
+# import HarddiskBenchmark as HarddiskBenchmark
 # from pages.Systeminfo import pp
 
 
