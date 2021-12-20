@@ -29,7 +29,6 @@ class MemoryBenchmark:
         for i in range(self.job):
             self.fibonacci_sequence(i)
         stop = time.time()
-        # stat = self.fibonacci_sequence.cache_info()
         self.fibonacci_sequence.cache_clear()
         self.result = stop-start
 

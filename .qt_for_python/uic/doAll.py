@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/benchmarkpage.ui'
+# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/doAll.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.frame)
         self.label_3.setGeometry(QtCore.QRect(400, 50, 750, 750))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("/Users/mawinsukmongkol/Desktop/CN212/assets/circleloop3.gif"))
+        self.label_3.setPixmap(QtGui.QPixmap("/Users/mawinsukmongkol/Desktop/CN212/circleloop3.gif"))
         self.label_3.setObjectName("label_3")
         self.exitButton = QtWidgets.QPushButton(self.frame)
         self.exitButton.setGeometry(QtCore.QRect(1020, 15, 93, 28))

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/loadingScreen.ui'
+# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/splashprogram.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -75,7 +75,7 @@ class Ui_Splashscreen(object):
         self.logoImage = QtWidgets.QLabel(self.splashframe)
         self.logoImage.setGeometry(QtCore.QRect(80, 50, 621, 481))
         self.logoImage.setText("")
-        self.logoImage.setPixmap(QtGui.QPixmap("/Users/mawinsukmongkol/Desktop/CN212/assets/logoImage.png"))
+        self.logoImage.setPixmap(QtGui.QPixmap("/Users/mawinsukmongkol/Desktop/CN212/logoImage.png"))
         self.logoImage.setObjectName("logoImage")
         self.logoImage.raise_()
         self.label.raise_()

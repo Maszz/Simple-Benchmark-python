@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/systemInfo.ui'
+# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/pp.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.frame)
         self.label_3.setGeometry(QtCore.QRect(600, 160, 340, 480))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("/Users/mawinsukmongkol/Desktop/CN212/assets/image_2.jpg"))
+        self.label_3.setPixmap(QtGui.QPixmap("/Users/mawinsukmongkol/Desktop/CN212/image_2.jpg"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.exitButton = QtWidgets.QPushButton(self.frame)
