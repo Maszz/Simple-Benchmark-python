@@ -134,7 +134,7 @@ background-color: rgba(255, 255, 255, 0);</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>../assets/logoImage.png</pixmap>
+        <pixmap>assets/logoImage.png</pixmap>
        </property>
       </widget>
       <zorder>logoImage</zorder>

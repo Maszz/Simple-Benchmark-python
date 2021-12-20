@@ -27,7 +27,7 @@ class LoadingScreen(QMainWindow):
     def __init__(self):
         self.counter = 0
         super(LoadingScreen, self).__init__()
-        loadUi("views/loadingScreen.ui", self)
+        loadUi("loadingScreen.ui", self)
         self.splashframe.setStyleSheet("background-color: transparent;")
 
         # QTIMER ==> START
@@ -60,7 +60,7 @@ class LoadingScreen(QMainWindow):
 class Systeminfo(QMainWindow):
     def __init__(self):
         super(Systeminfo, self).__init__()
-        loadUi("views/systemInfo.ui", self)
+        loadUi("systemInfo.ui", self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         # self.gridLayout_2.setStyleSheet("background: transparent;")
@@ -103,7 +103,7 @@ class Systeminfo(QMainWindow):
 class BenchmarkPage(QMainWindow):
     def __init__(self):
         super(BenchmarkPage, self).__init__()
-        loadUi("views/benchmarkpage.ui", self)
+        loadUi("benchmarkpage.ui", self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
