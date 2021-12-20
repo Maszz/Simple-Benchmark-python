@@ -83,6 +83,5 @@ class CpuBenchmark:
 
 
 if __name__ == '__main__':
-    a = Benchmark()
-    a.multicoreBenchmark(50)
-    print(a.excuteTime)
+    a = CpuBenchmark()
+    a.multicoreBenchmark()
