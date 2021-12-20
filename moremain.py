@@ -3,7 +3,7 @@ import sys
 from time import clock
 from typing import Counter
 from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
 
@@ -208,7 +208,6 @@ class Worker(QObject):
 
 class splashprogram(QMainWindow):
     def __init__(self):
-        self.counter = 0
         super(splashprogram, self).__init__()
         loadUi("splashprogram.ui", self)
         self.splashframe.setStyleSheet("background-color: transparent;")
@@ -221,11 +220,13 @@ class splashprogram(QMainWindow):
 
     def progress(self):
 
+        global counter
+
         # SET VALUE TO PROGRESS BAR
-        self.progressBar.setValue(self.counter)
+        self.progressBar.setValue(counter)
 
         # CLOSE SPLASH SCREE AND OPEN APP
-        if self.counter > 100:
+        if counter > 100:
             # STOP TIMER
             self.timer.stop()
 
@@ -237,25 +238,25 @@ class splashprogram(QMainWindow):
             self.close()
 
         # INCREASE COUNTER
-        self.counter += 1
+        counter += 1
 
 
 # main
-app = QApplication(sys.argv)
-welcome = splashprogram()
-widget = QtWidgets.QStackedWidget()
-widget.addWidget(welcome)
-widget.setFixedHeight(600)
-widget.setFixedWidth(800)
+if __name__ == "__main__":
 
+    app = QApplication(sys.argv)
+    welcome = splashprogram()
+    widget = QtWidgets.QStackedWidget()
+    widget.addWidget(welcome)
+    widget.setFixedHeight(600)
+    widget.setFixedWidth(800)
 
-# Remove title bar
-widget.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-widget.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+    # Remove title bar
+    widget.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+    widget.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
-
-widget.show()
-try:
-    sys.exit(app.exec_())
-except:
-    print("Exiting")
+    widget.show()
+    try:
+        sys.exit(app.exec_())
+    except:
+        print("Exiting")

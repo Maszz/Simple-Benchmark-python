@@ -4,6 +4,7 @@ from timeConvert import TimeConverter as tc
 import random
 import numpy as np
 import configparser
+from config import *
 
 
 class Benchmark:
@@ -13,11 +14,10 @@ class Benchmark:
         ** In multiprocessor we can't get the returnValue in direct way, using manager in Multiprocess to get the output.
 
         """
-        config = configparser.ConfigParser()
-        config.read_file(open('config.cfg'))
-        self.job = int(config.get('CPU_BENCHMARK', 'BENCHMARK_JOB'))
-        self.rd_num_size = int(config.get('CPU_BENCHMARK', 'RD_NUM_SIZE'))
-        self.arrays_size = int(config.get('CPU_BENCHMARK', 'ARRAY_SIZE'))
+        config = CONFIG()
+        self.job = config.CPU_BENCHMARK_JOB
+        self.rd_num_size = config.RD_NUM_SIZE
+        self.arrays_size = config.ARRAY_SIZE
         self.results = []
         self.returnValue = dict()
         self.worker = multiprocessing.cpu_count()
