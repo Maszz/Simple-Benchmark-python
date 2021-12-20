@@ -6,12 +6,8 @@ class CONFIG:
     def __init__(self):
         """Configuration"""
         self._config = configparser.ConfigParser()
-        self.checkSystem()
-        #####################################################
-        #                UI CONFIGURATION
-        #####################################################
-        self.WIDTH = self._config.get('TABLE', 'WIDTH')
-        self.FONT_SIZE = self._config.getint('TABLE', 'FONT_SIZE')
+        # self.checkSystem()
+        self._config.read_file(open('config.cfg'))
 
         #####################################################
         #           I/O BENCHMARKS CONFIGURATION
@@ -35,8 +31,8 @@ class CONFIG:
         self.MEMORY_BENCHMARK_JOB = self._config.getint(
             'MEMORY_BENCHMARK', "MEMORY_BENCHMARK_JOB")
 
-    def checkSystem(self):
-        if(platform.system() == "Darwin"):
-            self._config.read_file(open('configDarwin.cfg'))
-        if platform.system() == "Windows":
-            self._config.read_file(open('configWin.cfg'))
+    # def checkSystem(self):
+    #     if(platform.system() == "Darwin"):
+    #         self._config.read_file(open('configDarwin.cfg'))
+    #     if platform.system() == "Windows":
+    #         self._config.read_file(open('configWin.cfg'))

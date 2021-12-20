@@ -7,7 +7,7 @@ import configparser
 from config import *
 
 
-class Benchmark:
+class CpuBenchmark:
     def __init__(self):
         """
         Initialize worker and mulltiprocessing varable .

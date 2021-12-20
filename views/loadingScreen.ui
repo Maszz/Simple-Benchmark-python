@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Splashscreen</class>
+ <widget class="QMainWindow" name="Splashscreen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="splashframe">
+      <property name="font">
+       <font>
+        <family>Microsoft YaHei UI Light</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 255, 255, 255), stop:1 rgba(0, 0, 0, 0));</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>-170</x>
+         <y>40</y>
+         <width>781</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(255, 255, 255, 0);
+color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>BENCHMARK</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>140</y>
+         <width>551</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QProgressBar{
+	
+	
+	
+	background-color: qlineargradient(spread:pad, x1:1, y1:0.335, x2:0.338, y2:0.437682, stop:0 rgba(0, 0, 0, 50), stop:1 rgba(255, 255, 255, 207));
+	border-radius: 10px;
+	text-align: right;
+	
+	color: rgb(255, 255, 255);
+}
+QProgressBar::chunk {
+	border-radius: 10px;
+	
+	
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.369, x2:1, y2:0.364, stop:0 rgba(0, 179, 255, 200), stop:1 rgba(255, 255, 255, 20));
+}</string>
+       </property>
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>180</y>
+         <width>781</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 0);</string>
+       </property>
+       <property name="text">
+        <string>loading...</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="logoImage">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>50</y>
+         <width>621</width>
+         <height>481</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../assets/logoImage.png</pixmap>
+       </property>
+      </widget>
+      <zorder>logoImage</zorder>
+      <zorder>label</zorder>
+      <zorder>progressBar</zorder>
+      <zorder>label_2</zorder>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../Downloads/2แก้.qrc"/>
+  <include location="../../Downloads/logo.qrc"/>
+ </resources>
+ <connections/>
+</ui>

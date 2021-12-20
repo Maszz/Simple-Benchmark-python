@@ -38,7 +38,7 @@ class HarddiskBenchmark:
 
         # self.deleteTempFile()
 
-    def createFilesOs(self):
+    def createFilesBench(self):
         """
         createdFile benchmark created binary file for `self.fileAmount` @ size `self.fileSize` bytes.
         In development don't open directory.
@@ -49,19 +49,37 @@ class HarddiskBenchmark:
 
         for i in range(self.fileAmount):
 
-            f = os.open(f"temp/{i}.dat", os.O_CREAT | os.O_WRONLY, 0o777)
-            os.write(f, os.urandom(self.fileSize))
-            os.fsync(f)
+            f = os.open(f"temp/{i}.dat", os.O_CREAT, 0o777)
+            # os.write(f, os.urandom(self.fileSize))
+            # os.fsync(f)
 
             os.close(f)
         stop = time.time() - start
         self.result.append(stop)
 
-    def sequentialRead_os(self):
+    # def createFilesBench(self):
+    #     """
+    #     createdFile benchmark created binary file for {fileAmont} times @ size {size} bytes.
+    #     In development don't open directory.
+    #     :param : Integer of size in bytes.
+    #     :return : None.
+    #     """
+    #     # yield 'start'
+    #     start = time.time()
+
+    #     for i in range(self.fileAmount):
+    #         with open(f"temp/{i}.dat", 'wb') as binaryfile:
+    #             # binaryfile.write(os.urandom(self.fileSize))
+    #             pass
+    #     stop = time.time() - start
+
+    #     self.result.append(stop)
+
+    def readFilesBench(self):
         start = time.time()
         for i in range(self.fileAmount):
             # print(i)
-            f = os.open(f"temp/{i}.dat", os.O_RDONLY)
+            f = os.open(f"temp/{i}.dat", os.O_RDONLY, 0o777)
             os.lseek(f, 0, os.SEEK_SET)
             os.read(f, self.fileSize)
             os.close(f)
@@ -69,10 +87,23 @@ class HarddiskBenchmark:
 
         self.result.append(stop)
 
-    def sequentialWrite_os(self):
+    # def readFilesBench(self):
+    #     start = time.time()
+    #     # yield 'start'
+
+    #     for i in range(self.fileAmount):
+    #         with open(f"temp/{i}.dat", "rb") as f:
+    #             f.seek(0)
+    #             f.read()
+
+    #     stop = time.time() - start
+
+    #     self.result.append(stop)
+
+    def writeFileBench(self):
         start = time.time()
         for i in range(self.fileAmount):
-            f = os.open(f"temp/{i}.dat", os.O_CREAT | os.O_WRONLY, 0o777)
+            f = os.open(f"temp/{i}.dat", os.O_APPEND | os.O_WRONLY, 0o777)
 
             buff = os.urandom(self.fileSize)
             os.write(f, buff)
@@ -81,6 +112,15 @@ class HarddiskBenchmark:
             os.close(f)
         stop = time.time() - start
         self.result.append(stop)
+
+    # def writeFileBench(self):
+    #     start = time.time()
+
+    #     for i in range(self.fileAmount):
+    #         f = open(f"temp/{i}.dat", "ab").close()
+
+    #     stop = time.time() - start
+    #     self.result.append(stop)
 
     def deleteTempFile(self):
         """
@@ -95,5 +135,6 @@ class HarddiskBenchmark:
 
 if __name__ == "__main__":
     a = HarddiskBenchmark()
+
     # b = os.urandom(psutil.virtual_memory().total)
     # print(b)
