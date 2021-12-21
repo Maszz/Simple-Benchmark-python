@@ -11,8 +11,7 @@ class HarddiskBenchmark:
         Initialize HarddiskBenchmark object. 
         try to create temporary directory if it doesn't exist
         setting up config for benchmark `filesize` , `fileAmount`
-        :param : None
-        :return: None
+
 
         """
         config = CONFIG()
