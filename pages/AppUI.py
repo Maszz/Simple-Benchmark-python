@@ -161,6 +161,7 @@ class BenchmarkPage(QMainWindow):
         self.thread.finished.connect(
             lambda: self.pushButton_2.setEnabled(True)
         )
+        self.thread.finished.connect(self.complete_message)
 
     def reportProgress(self, score):
         if self.counter == 0:
@@ -190,6 +191,10 @@ class BenchmarkPage(QMainWindow):
 
         # CLOSE SPLASH SCREEN
         self.close()
+
+    def complete_message(self):
+        self.main = Complete()
+        self.main.show()
 
 
 class Worker(QObject):
@@ -228,3 +233,13 @@ class Worker(QObject):
         self.progress.emit(tc(memoryBenchmark.result).toString())
 
         self.finished.emit()
+
+
+class Complete(QMainWindow):
+    def __init__(self):
+        super(Complete, self).__init__()
+        loadUi("complete.ui", self)
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        self.closeBotton.clicked.connect(lambda: self.close())

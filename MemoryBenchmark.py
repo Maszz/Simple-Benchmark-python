@@ -25,7 +25,7 @@ class MemoryBenchmark:
         :return : None , store excuteTime to `self.result`
         """
         global temp
-        temp = os.urandom(self.MAX_MEMORY)
+        # temp = os.urandom(self.MAX_MEMORY)
         start = time.time()
         for i in range(self.job):
             self.fibonacci_sequence(i)
