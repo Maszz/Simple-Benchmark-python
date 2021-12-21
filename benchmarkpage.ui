@@ -68,7 +68,7 @@ background-color: rgba(255, 255, 255, 0);</string>
         <string notr="true">color: #aa00ff;</string>
        </property>
        <property name="text">
-        <string>SUPER BENMARK</string>
+        <string>SUPER BENCHMARK</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_3">

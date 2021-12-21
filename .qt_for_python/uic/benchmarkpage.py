@@ -217,7 +217,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "SUPER BENCHMARK"))
-        self.label_2.setText(_translate("MainWindow", "SUPER BENMARK"))
+        self.label_2.setText(_translate("MainWindow", "SUPER BENCHMARK"))
         self.exitButton.setText(_translate("MainWindow", "X"))
         self.pushButton_2.setText(_translate("MainWindow", "BACK"))
         self.pushButton_3.setText(_translate("MainWindow", "START"))
