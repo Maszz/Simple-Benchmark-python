@@ -116,14 +116,14 @@ class BenchmarkPage(QMainWindow):
 
         # set new type data
 
-        self.lbl_cpu_bench.setText("CPU Bench")
-        self.lbl_create_bench.setText("Create Bench")
-        self.lbl_write_bench.setText("Write Bench")
+        self.lbl_cpu_bench.setText("CPU Benchmark")
+        self.lbl_create_bench.setText("Create Benchmark")
+        self.lbl_write_bench.setText("Write Benchmark")
 
-        self.lbl_read_bench.setText("Read Bench")
+        self.lbl_read_bench.setText("Read Benchmark")
 
-        self.lbl_delete_bench.setText("Delete Bench")
-        self.lbl_memory_bench.setText("Memory Bench")
+        self.lbl_delete_bench.setText("Delete Benchmark")
+        self.lbl_memory_bench.setText("Memory Benchmark")
         # self.reset_score()
 
         # self.benchmarkAllWithUpdateState()
@@ -196,7 +196,7 @@ class BenchmarkPage(QMainWindow):
         # self.pushButton_2.setEnabled(True)
         self.main = Complete()
         self.main.label_2.setText(
-            f'{tc(benchmark_stop).toShortString()} to complete Benchmark')
+            f'{tc(benchmark_stop).toString()} to complete Benchmark')
         self.main.show()
 
 

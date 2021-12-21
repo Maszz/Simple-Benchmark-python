@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/complete.ui'
+# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/complete (1).ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #

@@ -91,7 +91,7 @@ border-style: none;</string>
      </property>
      <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,1,0" columnstretch="1,1,1">
       <item row="1" column="1">
-       <layout class="QGridLayout" name="gridLayout_2" rowstretch="4,1" columnstretch="0">
+       <layout class="QGridLayout" name="gridLayout_2" rowstretch="4,0" columnstretch="0">
         <property name="spacing">
          <number>0</number>
         </property>
@@ -109,28 +109,8 @@ border-style: none;</string>
          </widget>
         </item>
         <item row="1" column="0">
-         <layout class="QGridLayout" name="gridLayout_3" columnstretch="2,1,7">
+         <layout class="QGridLayout" name="gridLayout_3" columnstretch="2">
           <item row="0" column="0">
-           <widget class="QLabel" name="emptybox3">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>9</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(46, 46, 140, 150);
-color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
            <widget class="QLabel" name="label_2">
             <property name="font">
              <font>
@@ -146,28 +126,6 @@ background-color: rgba(46, 46, 140, 150);</string>
             </property>
             <property name="text">
              <string>seconds to complete</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="timetobenchmark">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgba(46, 46, 140, 150);
-color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="text">
-             <string>0</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

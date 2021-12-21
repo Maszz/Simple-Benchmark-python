@@ -14,7 +14,7 @@ class TimeConverter():
         :param: none
         :return: str
         """
-        return f'{self.timeFormat[1]} Min {self.timeFormat[2]:.0f} Sec {self.timeFormat[3]:.0f} ms \n'
+        return f'{self.timeFormat[1]:.0f} Min {self.timeFormat[2]:.0f} Sec {self.timeFormat[3]:.0f} ms \n'
 
     def toShortString(self):
         return f'{self.timeFormat[1]} : {self.timeFormat[2]:.0f} : {self.timeFormat[3]:.0f} \n'
