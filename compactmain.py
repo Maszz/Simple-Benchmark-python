@@ -1,12 +1,11 @@
-from os import close
+from os import error
 import sys
-from time import clock
-from typing import Counter
-from PyQt5.uic import loadUi
-from PyQt5 import QtWidgets, QtCore, QtGui, uic
-from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
-from PyQt5.QtCore import QObject, QThread, pyqtSignal
 
+from PyQt5.uic import loadUi
+from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtCore import QObject, QThread, pyqtSignal
+from pages.AppUI import LoadingScreen
 
 from CpuBenchmark import CpuBenchmark
 from HarddiskBenchmark import HarddiskBenchmark
@@ -15,7 +14,6 @@ from timeConvert import TimeConverter as tc
 
 ###############
 import platform
-
 import psutil
 import time
 import re
@@ -63,8 +61,6 @@ class Systeminfo(QMainWindow):
         loadUi("systemInfo.ui", self)
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        # self.gridLayout_2.setStyleSheet("background: transparent;")
-
 
 ####################################################
         self.exitButton.clicked.connect(lambda: self.close())
@@ -96,10 +92,6 @@ class Systeminfo(QMainWindow):
         self.close()
 
 
-# import HarddiskBenchmark as HarddiskBenchmark
-# from pages.Systeminfo import pp
-
-
 class BenchmarkPage(QMainWindow):
     def __init__(self):
         super(BenchmarkPage, self).__init__()
@@ -124,9 +116,7 @@ class BenchmarkPage(QMainWindow):
 
         self.lbl_delete_bench.setText("Delete Benchmark")
         self.lbl_memory_bench.setText("Memory Benchmark")
-        # self.reset_score()
 
-        # self.benchmarkAllWithUpdateState()
     def reset_score(self):
         self.cpu_bench.setText("-")
         self.create_bench.setText("-")
@@ -192,8 +182,7 @@ class BenchmarkPage(QMainWindow):
         self.close()
 
     def complete_message(self):
-        # self.pushButton_3.setEnabled(True)
-        # self.pushButton_2.setEnabled(True)
+
         self.main = Complete()
         self.main.label_2.setText(
             f'{tc(benchmark_stop).toString()} to complete Benchmark')

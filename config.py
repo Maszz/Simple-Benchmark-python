@@ -1,5 +1,4 @@
 import configparser
-import platform
 
 
 class CONFIG:

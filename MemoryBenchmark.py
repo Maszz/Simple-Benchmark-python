@@ -1,7 +1,6 @@
 import time
 import os
 import psutil
-from timeConvert import TimeConverter as tc
 from functools import lru_cache
 from config import CONFIG
 
