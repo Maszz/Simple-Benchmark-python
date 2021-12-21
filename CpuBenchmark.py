@@ -27,7 +27,7 @@ class CpuBenchmark:
         to efficiently using CPU, This function assigning job to process depends on CPU_COUNT
         assign process to every thread of cpu.
         :param : Job amount to assign to process .
-        :return :excute time
+        :return :None , store process time in `self.excuteTime`
         """
         start = time.time()
         process = list()
@@ -78,10 +78,3 @@ class CpuBenchmark:
         z = x@y
         stop = time.time()
         return (stop - start, z)
-
-
-if __name__ == '__main__':
-    a = CpuBenchmark()
-    a.multicoreBenchmark()
-    print(a.excuteTime)
-    # print(a.returnValue)

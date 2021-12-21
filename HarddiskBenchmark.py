@@ -16,13 +16,16 @@ class HarddiskBenchmark:
         Initialize HarddiskBenchmark object. 
         try to create temporary directory if it doesn't exist
         setting up config for benchmark `filesize` , `fileAmount`
-        :param : 
+        :param : None
+        :return: None
 
         """
         config = CONFIG()
         self.fileSize = config.FILE_SIZE
         self.fileAmount = config.FILE_AMOUNT
         self.result = list()
+
+        # try create temp directory
         try:
             os.mkdir("temp")
         except FileExistsError:
@@ -32,7 +35,6 @@ class HarddiskBenchmark:
     def createFilesBench(self):
         """
         createdFile benchmark created binary file for `self.fileAmount` @ size `self.fileSize` bytes.
-        In development don't open directory.
         :param : None
         :return : None.
         """
@@ -47,6 +49,11 @@ class HarddiskBenchmark:
         self.result.append(stop)
 
     def readFilesBench(self):
+        """
+        read file that created from :meth :`self.createFilesBench`
+        :param : None
+        :return : None
+        """
         start = time.time()
         for i in range(self.fileAmount):
             # print(i)
@@ -59,6 +66,9 @@ class HarddiskBenchmark:
         self.result.append(stop)
 
     def writeFileBench(self):
+        """
+        appending byte to file creatd by :meth :`createFilesBench`
+        """
         start = time.time()
         for i in range(self.fileAmount):
             f = os.open(f"temp/{i}.dat", os.O_APPEND | os.O_WRONLY, 0o777)
@@ -79,10 +89,3 @@ class HarddiskBenchmark:
 
         stop = time.time() - start
         self.result.append(stop)
-
-
-if __name__ == "__main__":
-    a = HarddiskBenchmark()
-
-    # b = os.urandom(psutil.virtual_memory().total)
-    # print(b)

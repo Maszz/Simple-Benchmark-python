@@ -43,9 +43,3 @@ class MemoryBenchmark:
             return 1
         else:
             return self.fibonacci_sequence(n-1)+self.fibonacci_sequence(n-2)
-
-
-if __name__ == '__main__':
-    a = MemoryBenchmark()
-    a.memoryBenchmark()
-    print(a.result)
