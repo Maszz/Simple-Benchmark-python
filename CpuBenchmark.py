@@ -16,9 +16,7 @@ class CpuBenchmark:
         self.job = config.CPU_BENCHMARK_JOB
         self.rd_num_size = config.RD_NUM_SIZE
         self.arrays_size = config.ARRAY_SIZE
-        self.results = []
-        self.manager = multiprocessing.Manager()
-        self.returnValue = self.manager.dict()
+        self.returnValue = dict()
         self.worker = multiprocessing.cpu_count()
         self.excuteTime = None
 
@@ -85,3 +83,5 @@ class CpuBenchmark:
 if __name__ == '__main__':
     a = CpuBenchmark()
     a.multicoreBenchmark()
+    print(a.excuteTime)
+    # print(a.returnValue)

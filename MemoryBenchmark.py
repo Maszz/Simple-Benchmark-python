@@ -24,13 +24,12 @@ class MemoryBenchmark:
         :param :None
         :return : None , store excuteTime to `self.result`
         """
+        global temp
         temp = os.urandom(self.MAX_MEMORY)
         start = time.time()
         for i in range(self.job):
             self.fibonacci_sequence(i)
         stop = time.time()
-        # stat = self.fibonacci_sequence.cache_info()
-        self.fibonacci_sequence.cache_clear()
         self.result = stop-start
 
     @lru_cache(maxsize=128)
@@ -48,4 +47,5 @@ class MemoryBenchmark:
 
 if __name__ == '__main__':
     a = MemoryBenchmark()
-    print(a.memoryBenchmark(1000000))
+    a.memoryBenchmark()
+    print(a.result)
