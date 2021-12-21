@@ -155,12 +155,11 @@ class BenchmarkPage(QMainWindow):
         # Final resets
         self.pushButton_3.setEnabled(False)
         self.pushButton_2.setEnabled(False)
+        self.thread.finished.connect(lambda: self.pushButton_3.setEnabled(True)
+                                     )
         self.thread.finished.connect(
-            lambda: self.pushButton_3.setEnabled(True)
-        )
-        self.thread.finished.connect(
-            lambda: self.pushButton_2.setEnabled(True)
-        )
+            lambda: self.pushButton_2.setEnabled(True))
+
         self.thread.finished.connect(self.complete_message)
 
     def reportProgress(self, score):
@@ -193,7 +192,11 @@ class BenchmarkPage(QMainWindow):
         self.close()
 
     def complete_message(self):
+        # self.pushButton_3.setEnabled(True)
+        # self.pushButton_2.setEnabled(True)
         self.main = Complete()
+        self.main.label_2.setText(
+            f'{tc(benchmark_stop).toShortString()} to complete Benchmark')
         self.main.show()
 
 
@@ -203,6 +206,7 @@ class Worker(QObject):
 
     def run(self):
         """Long-running task."""
+        start = time.time()
         cpuBenchmark = CpuBenchmark()
         cpuBenchmark.multicoreBenchmark()
         self.progress.emit(tc(cpuBenchmark.excuteTime).toString())
@@ -231,7 +235,8 @@ class Worker(QObject):
         memoryBenchmark = MemoryBenchmark()
         memoryBenchmark.memoryBenchmark()
         self.progress.emit(tc(memoryBenchmark.result).toString())
-
+        global benchmark_stop
+        benchmark_stop = time.time() - start
         self.finished.emit()
 
 
