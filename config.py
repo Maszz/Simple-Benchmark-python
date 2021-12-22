@@ -30,7 +30,7 @@ class CONFIG:
             'MEMORY_BENCHMARK', "MEMORY_BENCHMARK_JOB")
 
         ######################################################
-        #            MEORY BENCHMARKS CONFIGURATION
+        #            SCORE CONFIGURATION
         ######################################################
         self.MAX_SCORE = self._config.getint(
             'SCORE_CONSTANT', "MAX_SCORE")
