@@ -8,7 +8,7 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal
 from pages.AppUI import LoadingScreen
 
 from CpuBenchmark import CpuBenchmark
-from DiskBenchmark import HarddiskBenchmark
+from DiskBenchmark import DiskBenchmark
 from MemoryBenchmark import MemoryBenchmark
 from timeConvert import TimeConverter as tc
 from config import *
@@ -114,7 +114,7 @@ class BenchmarkPage(QMainWindow):
         # set new type data
 
         self.lbl_cpu_benchmark.setText("CPU Benchmark")
-        self.lbl_disk_benchmark.setText("IO Benchmark")
+        self.lbl_disk_benchmark.setText("Disk Benchmark")
 
         self.lbl_memory_benchmark.setText("Memory Benchmark")
         self.lbl_total.setText("Total")
