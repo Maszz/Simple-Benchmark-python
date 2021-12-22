@@ -28,3 +28,18 @@ class CONFIG:
         ######################################################
         self.MEMORY_BENCHMARK_JOB = self._config.getint(
             'MEMORY_BENCHMARK', "MEMORY_BENCHMARK_JOB")
+
+        ######################################################
+        #            MEORY BENCHMARKS CONFIGURATION
+        ######################################################
+        self.MAX_SCORE = self._config.getint(
+            'SCORE_CONSTANT', "MAX_SCORE")
+
+        self.CPU_SCORE_CONST = self._config.getint(
+            'SCORE_CONSTANT', "CPU_SCORE_CONST")
+
+        self.DISK_SCORE_CONST = self._config.getint(
+            'SCORE_CONSTANT', "DISK_SCORE_CONST")
+
+        self.MEMORY_SCORE_CONST = self._config.getint(
+            'SCORE_CONSTANT', "MEMORY_SCORE_CONST")

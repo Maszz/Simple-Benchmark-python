@@ -8,7 +8,7 @@ from CpuBenchmark import CpuBenchmark
 from DiskBenchmark import DiskBenchmark
 from MemoryBenchmark import MemoryBenchmark
 from timeConvert import TimeConverter as tc
-
+from config import *
 ###############
 import platform
 import psutil
@@ -16,6 +16,8 @@ import time
 import re
 import uuid
 ###############
+
+config = CONFIG()
 
 
 class LoadingScreen(QMainWindow):
@@ -187,18 +189,18 @@ class Worker(QObject):
         cpuBenchmark = CpuBenchmark()
         cpuBenchmark.multicoreBenchmark()
         self.progress.emit(
-            f'{((1 - (cpuBenchmark.excuteTime/1500)) * 1000): .2f}')
+            f'{((1 - (cpuBenchmark.excuteTime/config.CPU_SCORE_CONST)) * config.MAX_SCORE): .2f}')
 
         time.sleep(4)
         diskBenchmark = DiskBenchmark()
 
         diskBenchmark.startBenchmark()
         self.progress.emit(
-            f'{((1 - (diskBenchmark.benchmarkTime/600)) * 1000): .2f}')
+            f'{((1 - (diskBenchmark.benchmarkTime/config.DISK_SCORE_CONST)) * config.MAX_SCORE): .2f}')
         memoryBenchmark = MemoryBenchmark()
         memoryBenchmark.memoryBenchmark()
         self.progress.emit(
-            f'{((1 - (memoryBenchmark.result/400)) * 1000): .2f}')
+            f'{((1 - (memoryBenchmark.result/config.MEMORY_SCORE_CONST)) * config.MAX_SCORE): .2f}')
         global benchmark_stop
         benchmark_stop = time.time() - start
         self.finished.emit()

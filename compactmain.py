@@ -11,6 +11,7 @@ from CpuBenchmark import CpuBenchmark
 from DiskBenchmark import HarddiskBenchmark
 from MemoryBenchmark import MemoryBenchmark
 from timeConvert import TimeConverter as tc
+from config import *
 
 ###############
 import platform
@@ -19,6 +20,9 @@ import time
 import re
 import uuid
 ###############
+
+
+config = CONFIG()
 
 
 class LoadingScreen(QMainWindow):
@@ -110,14 +114,14 @@ class BenchmarkPage(QMainWindow):
         # set new type data
 
         self.lbl_cpu_benchmark.setText("CPU Benchmark")
-        self.lbl_io_benchmark.setText("IO Benchmark")
+        self.lbl_disk_benchmark.setText("IO Benchmark")
 
         self.lbl_memory_benchmark.setText("Memory Benchmark")
         self.lbl_total.setText("Total")
 
     def reset_score(self):
         self.cpu_benchmark_score.setText("-")
-        self.io_benchmark_score.setText("-")
+        self.disk_benchmark_score.setText("-")
         self.memory_benchmark_score.setText("-")
         self.total_score.setText("-")
         self.totalScore = 0
@@ -157,7 +161,7 @@ class BenchmarkPage(QMainWindow):
             self.cpu_benchmark_score.setText(score)
             self.counter += 1
         elif self.counter == 1:
-            self.io_benchmark_score.setText(score)
+            self.disk_benchmark_score.setText(score)
             self.counter += 1
         else:
             self.memory_benchmark_score.setText(score)
@@ -190,21 +194,31 @@ class Worker(QObject):
         cpuBenchmark = CpuBenchmark()
         cpuBenchmark.multicoreBenchmark()
         self.progress.emit(
-            f'{((1 - (cpuBenchmark.excuteTime/1000)) * 1000): .2f}')
+            f'{((1 - (cpuBenchmark.excuteTime/config.CPU_SCORE_CONST)) * config.MAX_SCORE): .2f}')
 
         time.sleep(4)
-        ioBenchmark = HarddiskBenchmark()
+        diskBenchmark = DiskBenchmark()
 
-        ioBenchmark.startBenchmark()
+        diskBenchmark.startBenchmark()
         self.progress.emit(
-            f'{((1 - (ioBenchmark.benchmarkTime/600)) * 1000): .2f}')
+            f'{((1 - (diskBenchmark.benchmarkTime/config.DISK_SCORE_CONST)) * config.MAX_SCORE): .2f}')
         memoryBenchmark = MemoryBenchmark()
         memoryBenchmark.memoryBenchmark()
         self.progress.emit(
-            f'{((1 - (memoryBenchmark.result/400)) * 1000): .2f}')
+            f'{((1 - (memoryBenchmark.result/config.MEMORY_SCORE_CONST)) * config.MAX_SCORE): .2f}')
         global benchmark_stop
         benchmark_stop = time.time() - start
         self.finished.emit()
+
+
+class Complete(QMainWindow):
+    def __init__(self):
+        super(Complete, self).__init__()
+        loadUi("complete.ui", self)
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
+        self.closeBotton.clicked.connect(lambda: self.close())
 
 
 if __name__ == '__main__':

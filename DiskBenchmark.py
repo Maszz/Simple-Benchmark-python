@@ -94,11 +94,3 @@ class DiskBenchmark:
 
         stop = time.time() - start
         self.result.append(stop)
-
-
-if __name__ == "__main__":
-
-    a = HarddiskBenchmark()
-    a.startBenchmark()
-    print(a.benchmarkTime)
-    print(sum(a.result))
