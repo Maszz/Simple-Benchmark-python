@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/benchmarkpage.ui'
+# Form implementation generated from reading ui file '/Users/mawinsukmongkol/Desktop/CN212/benchmarkpage (3).ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -228,8 +228,8 @@ class Ui_MainWindow(object):
         self.lbl_io_benchmark.setText(_translate("MainWindow", "TextLabel"))
         self.lbl_total.setText(_translate("MainWindow", "TextLabel"))
         self.lbl_memory_benchmark.setText(_translate("MainWindow", "TextLabel"))
-        self.cpu_benchmark_score.setText(_translate("MainWindow", "-"))
+        self.cpu_benchmark_score.setText(_translate("MainWindow", "TextLabel"))
         self.lbl_cpu_benchmark.setText(_translate("MainWindow", "TextLabel"))
-        self.io_benchmark_score.setText(_translate("MainWindow", "-"))
-        self.memory_benchmark_score.setText(_translate("MainWindow", "-"))
-        self.total_score.setText(_translate("MainWindow", "-"))
+        self.io_benchmark_score.setText(_translate("MainWindow", "TextLabel"))
+        self.memory_benchmark_score.setText(_translate("MainWindow", "TextLabel"))
+        self.total_score.setText(_translate("MainWindow", "TextLabel"))

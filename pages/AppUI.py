@@ -102,25 +102,22 @@ class BenchmarkPage(QMainWindow):
 
         # bench varable
         self.counter = 0
+        self.totalScore = 0
 
         # set new type data
 
-        self.lbl_cpu_bench.setText("CPU Benchmark")
-        self.lbl_create_bench.setText("Create Benchmark")
-        self.lbl_write_bench.setText("Write Benchmark")
+        self.lbl_cpu_benchmark.setText("CPU Benchmark")
+        self.lbl_io_benchmark.setText("IO Benchmark")
 
-        self.lbl_read_bench.setText("Read Benchmark")
-
-        self.lbl_delete_bench.setText("Delete Benchmark")
-        self.lbl_memory_bench.setText("Memory Benchmark")
+        self.lbl_memory_benchmark.setText("Memory Benchmark")
+        self.lbl_total.setText("Total")
 
     def reset_score(self):
-        self.cpu_bench.setText("-")
-        self.create_bench.setText("-")
-        self.write_bench.setText("-")
-        self.read_bench.setText("-")
-        self.delete_bench.setText("-")
-        self.memory_bench.setText("-")
+        self.cpu_benchmark_score.setText("-")
+        self.io_benchmark_score.setText("-")
+        self.memory_benchmark_score.setText("-")
+        self.total_score.setText("-")
+        self.totalScore = 0
 
     def runLongTask(self):
         self.reset_score()
@@ -148,25 +145,19 @@ class BenchmarkPage(QMainWindow):
             lambda: self.pushButton_2.setEnabled(True))
 
         self.thread.finished.connect(self.complete_message)
+        self.thread.finished.connect(lambda: self.total_score.setText(f'{self.totalScore:.2f}')
+                                     )
 
     def reportProgress(self, score):
+        self.totalScore += float(score)
         if self.counter == 0:
-            self.cpu_bench.setText(score)
+            self.cpu_benchmark_score.setText(score)
             self.counter += 1
         elif self.counter == 1:
-            self.create_bench.setText(score)
-            self.counter += 1
-        elif self.counter == 2:
-            self.write_bench.setText(score)
-            self.counter += 1
-        elif self.counter == 3:
-            self.read_bench.setText(score)
-            self.counter += 1
-        elif self.counter == 4:
-            self.delete_bench.setText(score)
+            self.io_benchmark_score.setText(score)
             self.counter += 1
         else:
-            self.memory_bench.setText(score)
+            self.memory_benchmark_score.setText(score)
             self.counter = 0
 
     def backbotton(self):
@@ -195,32 +186,19 @@ class Worker(QObject):
         start = time.time()
         cpuBenchmark = CpuBenchmark()
         cpuBenchmark.multicoreBenchmark()
-        self.progress.emit(tc(cpuBenchmark.excuteTime).toString())
+        self.progress.emit(
+            f'{((1 - (cpuBenchmark.excuteTime/1000)) * 1000): .2f}')
 
         time.sleep(4)
         ioBenchmark = HarddiskBenchmark()
-        ioBenchmark.createFilesBench()
-        self.progress.emit(tc(
-            ioBenchmark.result[0]).toString())
 
-        ioBenchmark.writeFileBench()
-
-        self.progress.emit(tc(
-            ioBenchmark.result[1]).toString())
-
-        ioBenchmark.readFilesBench()
-
-        self.progress.emit(tc(
-            ioBenchmark.result[2]).toString())
-
-        ioBenchmark.deleteTempFile()
-
-        self.progress.emit(tc(
-            ioBenchmark.result[3]).toString())
-
+        ioBenchmark.startBenchmark()
+        self.progress.emit(
+            f'{((1 - (ioBenchmark.benchmarkTime/600)) * 1000): .2f}')
         memoryBenchmark = MemoryBenchmark()
         memoryBenchmark.memoryBenchmark()
-        self.progress.emit(tc(memoryBenchmark.result).toString())
+        self.progress.emit(
+            f'{((1 - (memoryBenchmark.result/400)) * 1000): .2f}')
         global benchmark_stop
         benchmark_stop = time.time() - start
         self.finished.emit()

@@ -151,7 +151,7 @@ QPushButton:hover{
         <string>BACK</string>
        </property>
       </widget>
-       <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="pushButton_3">
        <property name="geometry">
         <rect>
          <x>250</x>
@@ -217,7 +217,7 @@ color: #aa00ff;</string>
          <x>70</x>
          <y>110</y>
          <width>641</width>
-         <height>461</height>
+         <height>491</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -232,148 +232,80 @@ color: #aa00ff;</string>
        <widget class="QWidget" name="gridLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>110</y>
-          <width>561</width>
+          <x>50</x>
+          <y>100</y>
+          <width>461</width>
           <height>361</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,2">
-         <item row="4" column="0">
-          <widget class="QLabel" name="lbl_delete_bench">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>Delete Bench</string>
-           </property>
-          </widget>
-         </item>
+        <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0">
          <item row="1" column="0">
-          <widget class="QLabel" name="lbl_create_bench">
+          <widget class="QLabel" name="lbl_io_benchmark">
            <property name="font">
             <font>
+             <family>Segoe UI</family>
              <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+</string>
            </property>
            <property name="text">
-            <string>Create Bench</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="lbl_write_bench">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>write Bench</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="write_bench">
-           <property name="styleSheet">
-            <string notr="true">color: rgb(218, 218, 218);
-background-color: rgba(255, 255, 255, 0);</string>
-           </property>
-           <property name="text">
-            <string>-</string>
+            <string>TextLabel</string>
            </property>
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLabel" name="lbl_read_bench">
+          <widget class="QLabel" name="lbl_total">
            <property name="font">
             <font>
+             <family>Segoe UI</family>
              <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+</string>
            </property>
            <property name="text">
-            <string>Read Bench</string>
+            <string>TextLabel</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="lbl_memory_bench">
+         <item row="2" column="0">
+          <widget class="QLabel" name="lbl_memory_benchmark">
            <property name="font">
             <font>
+             <family>Segoe UI</family>
              <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+</string>
            </property>
            <property name="text">
-            <string>Memory Bench</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="read_bench">
-           <property name="styleSheet">
-            <string notr="true">color: rgb(218, 218, 218);
-background-color: rgba(255, 255, 255, 0);</string>
-           </property>
-           <property name="text">
-            <string>-</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLabel" name="memory_bench">
-           <property name="styleSheet">
-            <string notr="true">color: rgb(218, 218, 218);
-background-color: rgba(255, 255, 255, 0);</string>
-           </property>
-           <property name="text">
-            <string>-</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="create_bench">
-           <property name="styleSheet">
-            <string notr="true">color: rgb(218, 218, 218);
-background-color: rgba(255, 255, 255, 0);</string>
-           </property>
-           <property name="text">
-            <string>-</string>
+            <string>TextLabel</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLabel" name="cpu_bench">
-           <property name="styleSheet">
-            <string notr="true">color: rgb(218, 218, 218);
-background-color: rgba(255, 255, 255, 0);</string>
+          <widget class="QLabel" name="cpu_benchmark_score">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>9</pointsize>
+            </font>
            </property>
-           <property name="text">
-            <string>-</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="delete_bench">
            <property name="styleSheet">
-            <string notr="true">color: rgb(218, 218, 218);
-background-color: rgba(255, 255, 255, 0);</string>
+            <string notr="true">color: rgb(232, 232, 232);</string>
            </property>
            <property name="text">
             <string>-</string>
@@ -381,50 +313,77 @@ background-color: rgba(255, 255, 255, 0);</string>
           </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QLabel" name="lbl_cpu_bench">
+          <widget class="QLabel" name="lbl_cpu_benchmark">
            <property name="font">
             <font>
+             <family>Segoe UI</family>
              <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>CPU Bench</string>
-           </property>
-          </widget>
-         </item>
-         <!-- <item row="6" column="0">
-          <widget class="QLabel" name="label_25">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>Memmory</string>
-           </property>
-          </widget>
-         </item> -->
-         <!-- <item row="6" column="1">
-          <widget class="QLabel" name="ram_3">
-           <property name="styleSheet">
-            <string notr="true">color: rgb(218, 218, 218);
-background-color: rgba(255, 255, 255, 0);</string>
+            <string notr="true">color: rgb(255, 255, 255);
+</string>
            </property>
            <property name="text">
             <string>TextLabel</string>
            </property>
           </widget>
-         </item> -->
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="io_benchmark_score">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(232, 232, 232);</string>
+           </property>
+           <property name="text">
+            <string>-</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="memory_benchmark_score">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(232, 232, 232);</string>
+           </property>
+           <property name="text">
+            <string>-</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="total_score">
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(232, 232, 232);</string>
+           </property>
+           <property name="text">
+            <string>-</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </widget>
       <zorder>label_3</zorder>
+      <zorder>pushButton_3</zorder>
       <zorder>label_2</zorder>
       <zorder>label</zorder>
       <zorder>exitButton</zorder>

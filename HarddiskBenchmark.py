@@ -18,6 +18,7 @@ class HarddiskBenchmark:
         self.fileSize = config.FILE_SIZE
         self.fileAmount = config.FILE_AMOUNT
         self.result = list()
+        self.benchmarkTime = None
 
         # try create temp directory
         try:
@@ -25,6 +26,16 @@ class HarddiskBenchmark:
         except FileExistsError:
             self.deleteTempFile()
             os.mkdir("temp")
+
+    def startBenchmark(self):
+        start = time.time()
+        self.createFilesBench()
+        self.writeFileBench()
+        self.readFilesBench()
+        self.deleteTempFile()
+        stop = time.time() - start
+
+        self.benchmarkTime = stop
 
     def createFilesBench(self):
         """
@@ -83,3 +94,11 @@ class HarddiskBenchmark:
 
         stop = time.time() - start
         self.result.append(stop)
+
+
+if __name__ == "__main__":
+
+    a = HarddiskBenchmark()
+    a.startBenchmark()
+    print(a.benchmarkTime)
+    print(sum(a.result))
