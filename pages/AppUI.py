@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
 
 from CpuBenchmark import CpuBenchmark
-from HarddiskBenchmark import HarddiskBenchmark
+from DiskBenchmark import DiskBenchmark
 from MemoryBenchmark import MemoryBenchmark
 from timeConvert import TimeConverter as tc
 
@@ -107,14 +107,14 @@ class BenchmarkPage(QMainWindow):
         # set new type data
 
         self.lbl_cpu_benchmark.setText("CPU Benchmark")
-        self.lbl_io_benchmark.setText("IO Benchmark")
+        self.lbl_disk_benchmark.setText("IO Benchmark")
 
         self.lbl_memory_benchmark.setText("Memory Benchmark")
         self.lbl_total.setText("Total")
 
     def reset_score(self):
         self.cpu_benchmark_score.setText("-")
-        self.io_benchmark_score.setText("-")
+        self.disk_benchmark_score.setText("-")
         self.memory_benchmark_score.setText("-")
         self.total_score.setText("-")
         self.totalScore = 0
@@ -154,7 +154,7 @@ class BenchmarkPage(QMainWindow):
             self.cpu_benchmark_score.setText(score)
             self.counter += 1
         elif self.counter == 1:
-            self.io_benchmark_score.setText(score)
+            self.disk_benchmark_score.setText(score)
             self.counter += 1
         else:
             self.memory_benchmark_score.setText(score)
@@ -187,14 +187,14 @@ class Worker(QObject):
         cpuBenchmark = CpuBenchmark()
         cpuBenchmark.multicoreBenchmark()
         self.progress.emit(
-            f'{((1 - (cpuBenchmark.excuteTime/1000)) * 1000): .2f}')
+            f'{((1 - (cpuBenchmark.excuteTime/1500)) * 1000): .2f}')
 
         time.sleep(4)
-        ioBenchmark = HarddiskBenchmark()
+        diskBenchmark = DiskBenchmark()
 
-        ioBenchmark.startBenchmark()
+        diskBenchmark.startBenchmark()
         self.progress.emit(
-            f'{((1 - (ioBenchmark.benchmarkTime/600)) * 1000): .2f}')
+            f'{((1 - (diskBenchmark.benchmarkTime/600)) * 1000): .2f}')
         memoryBenchmark = MemoryBenchmark()
         memoryBenchmark.memoryBenchmark()
         self.progress.emit(

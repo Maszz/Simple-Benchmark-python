@@ -10,9 +10,9 @@ class CONFIG:
         #####################################################
         #           I/O BENCHMARKS CONFIGURATION
         #####################################################
-        self.FILE_SIZE = eval(self._config.get('I/O_BENCHMARK', 'FILE_SIZE'))
+        self.FILE_SIZE = eval(self._config.get('DISK_BENCHMARK', 'FILE_SIZE'))
         self.FILE_AMOUNT = eval(self._config.get(
-            'I/O_BENCHMARK', 'FILE_AMOUNT'))
+            'DISK_BENCHMARK', 'FILE_AMOUNT'))
 
         #####################################################
         #            CPU BENCHMARKS CONFIGURATION

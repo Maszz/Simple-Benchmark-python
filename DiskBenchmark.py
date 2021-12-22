@@ -5,7 +5,7 @@ import shutil
 from config import *
 
 
-class HarddiskBenchmark:
+class DiskBenchmark:
     def __init__(self):
         """
         Initialize HarddiskBenchmark object. 

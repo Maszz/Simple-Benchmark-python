@@ -8,7 +8,7 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal
 from pages.AppUI import LoadingScreen
 
 from CpuBenchmark import CpuBenchmark
-from HarddiskBenchmark import HarddiskBenchmark
+from DiskBenchmark import HarddiskBenchmark
 from MemoryBenchmark import MemoryBenchmark
 from timeConvert import TimeConverter as tc
 

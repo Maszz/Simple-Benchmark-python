@@ -240,7 +240,7 @@ color: #aa00ff;</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0">
          <item row="1" column="0">
-          <widget class="QLabel" name="lbl_io_benchmark">
+          <widget class="QLabel" name="lbl_disk_benchmark">
            <property name="font">
             <font>
              <family>Segoe UI</family>
@@ -332,7 +332,7 @@ color: #aa00ff;</string>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLabel" name="io_benchmark_score">
+          <widget class="QLabel" name="disk_benchmark_score">
            <property name="font">
             <font>
              <family>Segoe UI</family>
