@@ -109,7 +109,7 @@ class BenchmarkPage(QMainWindow):
         # set new type data
 
         self.lbl_cpu_benchmark.setText("CPU Benchmark")
-        self.lbl_disk_benchmark.setText("IO Benchmark")
+        self.lbl_disk_benchmark.setText("Disk Benchmark")
 
         self.lbl_memory_benchmark.setText("Memory Benchmark")
         self.lbl_total.setText("Total")
