@@ -16,7 +16,7 @@ if __name__ == '__main__':
     widget.setFixedHeight(600)
     widget.setFixedWidth(800)
 
-    # Remove title bar
+    # Remove title bar from screen
     widget.setWindowFlags(QtCore.Qt.FramelessWindowHint)
     widget.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
